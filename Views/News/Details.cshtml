@@ -1,0 +1,83 @@
+﻿@model ConsumerTravell.Models.News
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>News</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.URL_hinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.URL_hinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_LoaiTin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_LoaiTin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLanXem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLanXem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinNoiBat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinNoiBat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Tin }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ConsumerTravell.Models.News>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.URL_hinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_LoaiTin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLanXem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinNoiBat)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TieuDe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.URL_hinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoiDung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_LoaiTin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLanXem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TinNoiBat)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Tin }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Tin }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Tin })
+        </td>
+    </tr>
+}
+
+</table>

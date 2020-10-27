@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DuLichModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administration">
+          <Key>
+            <PropertyRef Name="ID_Quantri" />
+          </Key>
+          <Property Name="ID_Quantri" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="MaLH" />
+          </Key>
+          <Property Name="MaLH" Type="int" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="255" />
+          <Property Name="ChucDanh" Type="nvarchar" MaxLength="255" />
+          <Property Name="CongTy" Type="nvarchar" MaxLength="255" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+          <Property Name="DienThoai" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="NoiDungLH" Type="nvarchar" MaxLength="255" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="int" Nullable="false" />
+          <Property Name="TenKH" Type="nvarchar" MaxLength="255" />
+          <Property Name="TenDangNhap" Type="varchar" MaxLength="255" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="255" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="255" />
+          <Property Name="Dienthoai" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID_Tin" />
+          </Key>
+          <Property Name="ID_Tin" Type="int" Nullable="false" />
+          <Property Name="TieuDe" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayDang" Type="datetime" />
+          <Property Name="URL_hinh" Type="nvarchar" MaxLength="255" />
+          <Property Name="Ngay" Type="datetime" />
+          <Property Name="NoiDung" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_LoaiTin" Type="int" />
+          <Property Name="SoLanXem" Type="int" />
+          <Property Name="TinNoiBat" Type="int" />
+        </EntityType>
+        <EntityType Name="ProvinceCity">
+          <Key>
+            <PropertyRef Name="MaTinh" />
+          </Key>
+          <Property Name="MaTinh" Type="int" Nullable="false" />
+          <Property Name="TenTinh" Type="nvarchar" MaxLength="255" />
+          <Property Name="TenTp" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tour">
+          <Key>
+            <PropertyRef Name="MaTour" />
+          </Key>
+          <Property Name="MaTour" Type="int" Nullable="false" />
+          <Property Name="TenTour" Type="nvarchar" MaxLength="255" />
+          <Property Name="DonViTinh" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayKhoiHanh" Type="datetime" />
+          <Property Name="NgayKetThuc" Type="datetime" />
+          <Property Name="SoNgay" Type="int" />
+          <Property Name="SoDem" Type="int" />
+          <Property Name="SoCho" Type="int" />
+          <Property Name="NoiDung" Type="nvarchar" MaxLength="255" />
+          <Property Name="HinhAnh" Type="nvarchar" MaxLength="255" />
+          <Property Name="KhuyenMai" Type="int" />
+          <Property Name="TourHot" Type="int" />
+          <Property Name="MaTinh" Type="int" />
+        </EntityType>
+        <EntityType Name="TourBooking">
+          <Key>
+            <PropertyRef Name="MaDatTour" />
+          </Key>
+          <Property Name="MaDatTour" Type="int" Nullable="false" />
+          <Property Name="MaKH" Type="int" />
+          <Property Name="MaTour" Type="int" />
+          <Property Name="Dongia" Type="int" />
+          <Property Name="SoLuong" Type="int" />
+          <Property Name="ThanhTien" Type="int" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_NguoiDung" />
+          </Key>
+          <Property Name="ID_NguoiDung" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__Tour__MaTinh__164452B1">
+          <End Role="ProvinceCity" Type="Self.ProvinceCity" Multiplicity="0..1" />
+          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProvinceCity">
+              <PropertyRef Name="MaTinh" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="MaTinh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TourBooki__MaTou__1BFD2C07">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="0..1" />
+          <End Role="TourBooking" Type="Self.TourBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="MaTour" />
+            </Principal>
+            <Dependent Role="TourBooking">
+              <PropertyRef Name="MaTour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TourBookin__MaKH__1B0907CE">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="TourBooking" Type="Self.TourBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="TourBooking">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DuLichModelStoreContainer">
+          <EntitySet Name="Administration" EntityType="Self.Administration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProvinceCity" EntityType="Self.ProvinceCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tour" EntityType="Self.Tour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourBooking" EntityType="Self.TourBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Tour__MaTinh__164452B1" Association="Self.FK__Tour__MaTinh__164452B1">
+            <End Role="ProvinceCity" EntitySet="ProvinceCity" />
+            <End Role="Tour" EntitySet="Tour" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TourBooki__MaTou__1BFD2C07" Association="Self.FK__TourBooki__MaTou__1BFD2C07">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="TourBooking" EntitySet="TourBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TourBookin__MaKH__1B0907CE" Association="Self.FK__TourBookin__MaKH__1B0907CE">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="TourBooking" EntitySet="TourBooking" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DuLichModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administration">
+          <Key>
+            <PropertyRef Name="ID_Quantri" />
+          </Key>
+          <Property Name="ID_Quantri" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PassWord" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="MaLH" />
+          </Key>
+          <Property Name="MaLH" Type="Int32" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ChucDanh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CongTy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DienThoai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDungLH" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="Int32" Nullable="false" />
+          <Property Name="TenKH" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="GioiTinh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Diachi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Dienthoai" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TourBookings" Relationship="Self.FK__TourBookin__MaKH__1B0907CE" FromRole="Customer" ToRole="TourBooking" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID_Tin" />
+          </Key>
+          <Property Name="ID_Tin" Type="Int32" Nullable="false" />
+          <Property Name="TieuDe" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDang" Type="DateTime" Precision="3" />
+          <Property Name="URL_hinh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Ngay" Type="DateTime" Precision="3" />
+          <Property Name="NoiDung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID_LoaiTin" Type="Int32" />
+          <Property Name="SoLanXem" Type="Int32" />
+          <Property Name="TinNoiBat" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProvinceCity">
+          <Key>
+            <PropertyRef Name="MaTinh" />
+          </Key>
+          <Property Name="MaTinh" Type="Int32" Nullable="false" />
+          <Property Name="TenTinh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TenTp" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tours" Relationship="Self.FK__Tour__MaTinh__164452B1" FromRole="ProvinceCity" ToRole="Tour" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tour">
+          <Key>
+            <PropertyRef Name="MaTour" />
+          </Key>
+          <Property Name="MaTour" Type="Int32" Nullable="false" />
+          <Property Name="TenTour" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DonViTinh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NgayKhoiHanh" Type="DateTime" Precision="3" />
+          <Property Name="NgayKetThuc" Type="DateTime" Precision="3" />
+          <Property Name="SoNgay" Type="Int32" />
+          <Property Name="SoDem" Type="Int32" />
+          <Property Name="SoCho" Type="Int32" />
+          <Property Name="NoiDung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HinhAnh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="KhuyenMai" Type="Int32" />
+          <Property Name="TourHot" Type="Int32" />
+          <Property Name="MaTinh" Type="Int32" />
+          <NavigationProperty Name="ProvinceCity" Relationship="Self.FK__Tour__MaTinh__164452B1" FromRole="Tour" ToRole="ProvinceCity" />
+          <NavigationProperty Name="TourBookings" Relationship="Self.FK__TourBooki__MaTou__1BFD2C07" FromRole="Tour" ToRole="TourBooking" />
+        </EntityType>
+        <EntityType Name="TourBooking">
+          <Key>
+            <PropertyRef Name="MaDatTour" />
+          </Key>
+          <Property Name="MaDatTour" Type="Int32" Nullable="false" />
+          <Property Name="MaKH" Type="Int32" />
+          <Property Name="MaTour" Type="Int32" />
+          <Property Name="Dongia" Type="Int32" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="ThanhTien" Type="Int32" />
+          <Property Name="TrangThai" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__TourBookin__MaKH__1B0907CE" FromRole="TourBooking" ToRole="Customer" />
+          <NavigationProperty Name="Tour" Relationship="Self.FK__TourBooki__MaTou__1BFD2C07" FromRole="TourBooking" ToRole="Tour" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID_NguoiDung" />
+          </Key>
+          <Property Name="ID_NguoiDung" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PassWord" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__TourBookin__MaKH__1B0907CE">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="TourBooking" Type="Self.TourBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="TourBooking">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tour__MaTinh__164452B1">
+          <End Role="ProvinceCity" Type="Self.ProvinceCity" Multiplicity="0..1" />
+          <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProvinceCity">
+              <PropertyRef Name="MaTinh" />
+            </Principal>
+            <Dependent Role="Tour">
+              <PropertyRef Name="MaTinh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TourBooki__MaTou__1BFD2C07">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="0..1" />
+          <End Role="TourBooking" Type="Self.TourBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="MaTour" />
+            </Principal>
+            <Dependent Role="TourBooking">
+              <PropertyRef Name="MaTour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DuLichEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrations" EntityType="Self.Administration" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="ProvinceCities" EntityType="Self.ProvinceCity" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tours" EntityType="Self.Tour" />
+          <EntitySet Name="TourBookings" EntityType="Self.TourBooking" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__TourBookin__MaKH__1B0907CE" Association="Self.FK__TourBookin__MaKH__1B0907CE">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="TourBooking" EntitySet="TourBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tour__MaTinh__164452B1" Association="Self.FK__Tour__MaTinh__164452B1">
+            <End Role="ProvinceCity" EntitySet="ProvinceCities" />
+            <End Role="Tour" EntitySet="Tours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TourBooki__MaTou__1BFD2C07" Association="Self.FK__TourBooki__MaTou__1BFD2C07">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="TourBooking" EntitySet="TourBookings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DuLichModelStoreContainer" CdmEntityContainer="DuLichEntities">
+          <EntitySetMapping Name="Administrations">
+            <EntityTypeMapping TypeName="DuLichModel.Administration">
+              <MappingFragment StoreEntitySet="Administration">
+                <ScalarProperty Name="ID_Quantri" ColumnName="ID_Quantri" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="DuLichModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="MaLH" ColumnName="MaLH" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="ChucDanh" ColumnName="ChucDanh" />
+                <ScalarProperty Name="CongTy" ColumnName="CongTy" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NoiDungLH" ColumnName="NoiDungLH" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="DuLichModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="Dienthoai" ColumnName="Dienthoai" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="DuLichModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="ID_Tin" ColumnName="ID_Tin" />
+                <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+                <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+                <ScalarProperty Name="URL_hinh" ColumnName="URL_hinh" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="ID_LoaiTin" ColumnName="ID_LoaiTin" />
+                <ScalarProperty Name="SoLanXem" ColumnName="SoLanXem" />
+                <ScalarProperty Name="TinNoiBat" ColumnName="TinNoiBat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProvinceCities">
+            <EntityTypeMapping TypeName="DuLichModel.ProvinceCity">
+              <MappingFragment StoreEntitySet="ProvinceCity">
+                <ScalarProperty Name="MaTinh" ColumnName="MaTinh" />
+                <ScalarProperty Name="TenTinh" ColumnName="TenTinh" />
+                <ScalarProperty Name="TenTp" ColumnName="TenTp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DuLichModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tours">
+            <EntityTypeMapping TypeName="DuLichModel.Tour">
+              <MappingFragment StoreEntitySet="Tour">
+                <ScalarProperty Name="MaTour" ColumnName="MaTour" />
+                <ScalarProperty Name="TenTour" ColumnName="TenTour" />
+                <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
+                <ScalarProperty Name="NgayKhoiHanh" ColumnName="NgayKhoiHanh" />
+                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+                <ScalarProperty Name="SoNgay" ColumnName="SoNgay" />
+                <ScalarProperty Name="SoDem" ColumnName="SoDem" />
+                <ScalarProperty Name="SoCho" ColumnName="SoCho" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+                <ScalarProperty Name="KhuyenMai" ColumnName="KhuyenMai" />
+                <ScalarProperty Name="TourHot" ColumnName="TourHot" />
+                <ScalarProperty Name="MaTinh" ColumnName="MaTinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourBookings">
+            <EntityTypeMapping TypeName="DuLichModel.TourBooking">
+              <MappingFragment StoreEntitySet="TourBooking">
+                <ScalarProperty Name="MaDatTour" ColumnName="MaDatTour" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="MaTour" ColumnName="MaTour" />
+                <ScalarProperty Name="Dongia" ColumnName="Dongia" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DuLichModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID_NguoiDung" ColumnName="ID_NguoiDung" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

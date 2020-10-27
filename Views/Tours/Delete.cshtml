@@ -1,0 +1,121 @@
+﻿@model ConsumerTravell.Models.Tour
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Tour</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonViTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonViTinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayKhoiHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayKhoiHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayKetThuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayKetThuc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoNgay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoNgay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoCho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoCho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KhuyenMai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KhuyenMai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TourHot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TourHot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProvinceCity.TenTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProvinceCity.TenTinh)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
